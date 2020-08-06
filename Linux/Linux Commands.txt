@@ -1,0 +1,45 @@
+
+After creating and configuring the Web-1, Web-2 and JumpboxProvisioner VMs, Network Security Groups, etc ...
+
+Desc				Command							Notes
+---------------------------	---------------------------------------------------	------------------------------------------------------------------------------------------------
+Connect to Jumpbox:		ssh -i ~/.ssh/azure_labs RedTeamUser@999.999.999.999	The ip is dynamic so you must acquire after you start up the vm in Azure.
+
+Become Superuser:		sudo su
+
+To install Ansible:		apt install ansible
+To install Docker:		apt install docker.io
+
+List Containers:		docker container ls -a
+Start Docker Container:		docker start [docker name]
+Get a Shell in Container:	docker attach [docker name]
+
+Edit the ansible.cfg file:	vim /etc/ansible/ansible.cfg
+To get a generic playbook:	wget https://tinyurl.com/cyber-pentest-v3
+Move generic to desired name:	mv cyber-pentest-v3 /etc/ansible/pentest.yml   
+Edit the playbook:		vim /etc/ansible/pentest.yml
+Run the playbook:`		ansible-playbook /etc/ansible/pentest.yml		This configures both VMs to work the same way for redundancy/failover.
+											You can now test that they work, that one works when the other is stopped, etc.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+After creating and configuring the ELK-VM VM, Network Security Groups, etc ...
+
+Connect to ELK-VM:		ssh RedTeamUser@10.0.0.4				
+
+Become Superuser:		sudo su
+
+To install Ansible:		sudo apt install ansible
+To install Docker:		sudo apt install docker.io
+
+List Containers:		docker container ls -a
+Start Docker Container:		docker start [docker name]
+Get a Shell in Container:	docker attach [docker name]
+
+Edit the ansible.cfg file:	vim /etc/ansible/ansible.cfg
+To get a generic playbook:	wget https://tinyurl.com/cyber-pentest-v3
+Move generic to desired name:	mv cyber-pentest-v3 /etc/ansible/install-elk.yml   
+Edit the playbook:		vim /etc/ansible/install-elk.yml
+Run the playbook:`		ansible-playbook /etc/ansible/install-elk.yml		This configures the elk VM.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This is as far as I got :(
